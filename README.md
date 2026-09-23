@@ -6,7 +6,7 @@ The platform provides a centralized system for plant and disease management, sym
 
 ## Live Demo
 
-> Add your deployed frontend URL here when available.
+> 
 
 ## Features
 
