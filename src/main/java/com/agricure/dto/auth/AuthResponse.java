@@ -1,0 +1,16 @@
+package com.agricure.dto.auth;
+
+import com.agricure.entity.Role;
+
+public record AuthResponse(
+        String token,
+        String tokenType,
+        Long userId,
+        String fullName,
+        String email,
+        Role role
+) {
+    public static AuthResponse bearer(String token, Long userId, String fullName, String email, Role role) {
+        return new AuthResponse(token, "Bearer", userId, fullName, email, role);
+    }
+}
