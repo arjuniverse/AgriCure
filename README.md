@@ -47,7 +47,48 @@ AgriCure/
 
 ## System Architecture
 
-The application follows a layered architecture in which controllers receive API requests, services handle business logic, repositories communicate with the database, and DTOs provide structured API responses.
+The application follows a layered full-stack architecture. Users interact with the React frontend, which communicates with the Spring Boot REST API. Spring Security manages JWT authentication and role-based access, while services handle business logic and repositories interact with the database.
+
+```mermaid
+flowchart TD
+    A[User / Administrator] --> B[React + Vite Frontend]
+
+    B --> C[REST API]
+    C --> D[Spring Security + JWT]
+
+    D --> E[Controllers]
+
+    E --> F[Auth Controller]
+    E --> G[Plant & Disease Controllers]
+    E --> H[Identification Controller]
+    E --> I[Admin Controllers]
+
+    F --> J[Service Layer]
+    G --> J
+    H --> J
+    I --> J
+
+    J --> K[Business Logic & Validation]
+
+    K --> L[Disease Identification Engine]
+    K --> M[DTO Mapping]
+    K --> N[Exception Handler]
+
+    L --> O[Symptom Keyword Matching]
+    O --> P[Ranked Disease Results]
+
+    J --> Q[Spring Data JPA Repositories]
+
+    Q --> R[(Database)]
+
+    R --> S[H2 Local Database]
+    R --> T[MySQL Production Database]
+
+    P --> U[Treatment & Prevention Information]
+    U --> B
+
+    N --> B
+```
 
 ![AgriCure System Architecture](docs/agricure-system-architecture.png)
 
